@@ -1,3 +1,4 @@
+'''
 1. Design and create the Table
 If the table is already created in the database, you can skip this step.
 
@@ -258,10 +259,8 @@ describe AlbumRepository do
   before(:each) do 
     reset_students_table
   end
-
-  it mblajsljn do
     
 end
-
+'''
 8. Test-drive and implement the Repository class behaviour
 After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
