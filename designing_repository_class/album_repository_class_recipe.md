@@ -16,7 +16,7 @@ If seed data is provided (or you already created it), you can skip this step.
 -- so we can start with a fresh state.
 -- (RESTART IDENTITY resets the primary key)
 
-TRUNCATE TABLE students RESTART IDENTITY; -- replace with your own table name.
+TRUNCATE TABLE albums RESTART IDENTITY;
 
 -- Below this line there should only be `INSERT` statements.
 -- Replace these statements with your own seed data.
@@ -30,15 +30,15 @@ psql -h 127.0.0.1 music_library < seeds_albums.sql
 Usually, the Model class name will be the capitalised table name (single instead of plural). The same name is then suffixed by Repository for the Repository class name.
 
 # EXAMPLE
-# Table name: students
+# Table name: albums
 
 # Model class
-# (in lib/student.rb)
+# (in lib/album.rb)
 class Album
 end
 
 # Repository class
-# (in lib/student_repository.rb)
+# (in lib/album_repository.rb)
 class AlbumRepository
 end
 4. Implement the Model class
@@ -56,13 +56,6 @@ class Album
   attr_accessor :id, :title, :release_year, :artist_id
 end
 
-# The keyword attr_accessor is a special Ruby feature
-# which allows us to set and get attributes on an object,
-# here's an example:
-#
-# student = Student.new
-# student.name = 'Jo'
-# student.name
 You may choose to test-drive this class, but unless it contains any more logic than the example above, it is probably not needed.
 
 5. Define the Repository Class interface
@@ -166,7 +159,7 @@ albums[1].release_year # =>  1972
 albums[1].artist_id # => 3
 
 # 2
-# Get a single student
+# Get a single album
 
 repo = AlbumRepository.new
 
@@ -257,7 +250,7 @@ end
 
 describe AlbumRepository do
   before(:each) do 
-    reset_students_table
+    reset_albums_table
   end
     
 end
