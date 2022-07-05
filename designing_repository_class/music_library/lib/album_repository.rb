@@ -1,4 +1,6 @@
 require_relative './album'
+require_relative 'database_connection'
+require 'pg'
 
 class AlbumRepository
     def all
@@ -8,7 +10,7 @@ class AlbumRepository
 
         result_set.each do |record|
             album = Album.new
-            album.id = record['id']
+            album.id = record['id'].to_i
             album.title = record['title']
             album.release_year = record['release_year']
             album.artist_id = record['artist_id']
@@ -17,4 +19,19 @@ class AlbumRepository
 
         return albums
     end
+
+    def find(id)
+        param = [id]
+        sql = 'SELECT * FROM artists WHERE id = $1;'
+        result_set = DatabaseConnection.exec_params(sql, param)
+    
+        result = result_set[0]
+        album = Album.new
+        album.id = result['id'].to_i
+        album.title = result['title']
+        album.release_year = result['release_year']
+        album.artist_id = result['artist_id']
+    
+        return album
+      end
 end
