@@ -34,6 +34,7 @@ Column names: `title`, `genre`, `release_year`
 
 ```
 id: SERIAL
+title text,
 genre: text
 release_year: int
 ```
