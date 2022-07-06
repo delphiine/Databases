@@ -22,7 +22,6 @@ class BookRepository
         sql = 'SELECT id, title, author_name FROM books WHERE id = $1'
         result_set = DatabaseConnection.exec_params(sql, [id])
 
-        puts result_set
         item = result_set[0]
         book = Book.new
         book.id = item['id'].to_i
