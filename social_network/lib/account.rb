@@ -1,4 +1,4 @@
 class Account
     
-    attr_accessor :id, :email, :username, :post
+    attr_accessor :id, :email, :username
 end

@@ -36,7 +36,7 @@ Define the attributes of your Model class. You can usually map the table columns
 
 ```ruby
 # EXAMPLE
-# Table name: accounts
+# Table name: posts
 
 # Model class
 # (in lib/post.rb)

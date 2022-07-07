@@ -5,14 +5,13 @@ CREATE SEQUENCE IF NOT EXISTS accounts_id_seq;
 CREATE TABLE "public"."accounts" (
   "id" SERIAL PRIMARY KEY,
   "email" text,
-  "username" text,
-  "post" text
+  "username" text
 );
 
-INSERT INTO "public"."accounts" ("id", "email", "username", "post") VALUES
-(1, 'test1@email.com', 'username1', 'post1'),
-(2, 'test2@email.com', 'username2', 'post2'),
-(3, 'test3@email.com', 'username3', 'post3');
+INSERT INTO "public"."accounts" ("id", "email", "username") VALUES
+(1, 'test1@email.com', 'username1'),
+(2, 'test2@email.com', 'username2'),
+(3, 'test3@email.com', 'username3');
 
 -----------------------------------------------------------------------------------
 

@@ -21,18 +21,14 @@ RSpec.describe AccountRepository do
         expect(accounts[0].id).to eq(1)
         expect(accounts[0].email).to eq('test1@email.com')
         expect(accounts[0].username).to eq('username1')
-        expect(accounts[0].post).to eq('post1')
 
         expect(accounts[1].id).to eq(2)
         expect(accounts[1].email).to eq('test2@email.com')
         expect( accounts[1].username).to eq('username2')
-        expect(accounts[1].post).to eq('post2')
 
         expect(accounts[2].id).to eq(3)
         expect(accounts[2].email).to eq('test3@email.com')
         expect(accounts[2].username).to eq('username3')
-        expect(accounts[2].post).to eq('post3')
-
     end
 
     it "returns a single account" do
@@ -42,7 +38,6 @@ RSpec.describe AccountRepository do
         expect(accounts.id).to eq(1)
         expect(accounts.email).to eq('test1@email.com')
         expect(accounts.username).to eq('username1')
-        expect(accounts.post).to eq('post1')
     end
 
     it "adds new record to the 'accounts' table" do
@@ -52,7 +47,6 @@ RSpec.describe AccountRepository do
         new_account.id = 4
         new_account.email = 'test4@email.com'
         new_account.username = 'username4'
-        new_account.post = 'post4'
 
         repo.create(new_account)
         all_accounts = repo.all
@@ -64,7 +58,6 @@ RSpec.describe AccountRepository do
                 id: new_account.id,
                 email: new_account.email,
                 username: new_account.username,
-                post: new_account.post
             )
         )
     end
@@ -76,7 +69,6 @@ RSpec.describe AccountRepository do
         new_account.id = 4
         new_account.email = 'test4@email.com'
         new_account.username = 'username4'
-        new_account.post = 'post4'
 
         repo.create(new_account)
         all_accounts = repo.all
@@ -94,7 +86,6 @@ RSpec.describe AccountRepository do
         new_account.id = 4
         new_account.email = 'test4@email.com'
         new_account.username = 'username4'
-        new_account.post = 'post4'
 
         repo.create(new_account)
         all_accounts = repo.all

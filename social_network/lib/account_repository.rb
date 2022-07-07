@@ -2,7 +2,7 @@ require_relative './account'
 
 class AccountRepository
     def all
-        sql = 'SELECT id, email, username, post FROM accounts'
+        sql = 'SELECT id, email, username FROM accounts'
         result_set = DatabaseConnection.exec_params(sql, [])
         accounts = []
 
@@ -11,7 +11,6 @@ class AccountRepository
             account.id = item['id'].to_i
             account.email = item['email']
             account.username = item['username']
-            account.post = item['post']
 
             accounts << account
         end
@@ -20,7 +19,7 @@ class AccountRepository
     end
 
     def find(id)
-        sql = 'SELECT id, email, username, post FROM accounts WHERE id = $1'
+        sql = 'SELECT id, email, username FROM accounts WHERE id = $1'
         result_set = DatabaseConnection.exec_params(sql, [id])
 
         item = result_set[0]
@@ -28,7 +27,6 @@ class AccountRepository
         account.id = item['id'].to_i
         account.email = item['email']
         account.username = item['username']
-        account.post = item['post']
 
         return account
 
@@ -36,14 +34,13 @@ class AccountRepository
 
     def create(new_account)
         sql = 'INSERT INTO 
-        accounts (id, email, username, post) 
-        VALUES ($1, $2, $3, $4)'
+        accounts (id, email, username) 
+        VALUES ($1, $2, $3)'
 
         params = [
             new_account.id,
             new_account.email,
             new_account.username,
-            new_account.post
         ]
         
         DatabaseConnection.exec_params(sql, params)
@@ -53,5 +50,4 @@ class AccountRepository
         sql = 'DELETE FROM accounts WHERE id = $1'
         DatabaseConnection.exec_params(sql, [id])
     end
-
 end
