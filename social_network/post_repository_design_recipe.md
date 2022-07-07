@@ -86,7 +86,7 @@ class PostRepository
 
   # Add more methods below for each operation you'd like to implement.
 
-  # Adds new record in to the 'posts' table
+  # Adds new record to the 'posts' table
   # One argument: the new post
   def create(new_post)
     # Executes the SQL query:

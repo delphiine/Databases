@@ -84,6 +84,8 @@ class AccountRepository
 
   # Add more methods below for each operation you'd like to implement.
 
+  # Adds new record in to the 'posts' table
+  # One argument: the new post
   def create(new_account)
     # Executes the SQL query:
     # INSERT INTO accounts (email, username, post) VALUES (4, 'test4@email.com', 'username4', 'post4')
@@ -91,6 +93,8 @@ class AccountRepository
     # Returns nothing
   end
 
+  # Deletes a posts
+  # One argument: the id (number)
   def delete(id)
     # Executes the SQL query:
     # DELETE FROM accounts WHERE id = $1
@@ -111,7 +115,6 @@ These examples will later be encoded as RSpec tests.
 
 # 1
 # Get all accounts
-
 repo = AccountRepository.new
 
 accounts = repo.all
@@ -135,7 +138,6 @@ accounts[2].post # => post3
 
 # 2
 # Get a single account
-
 repo = AccountRepository.new
 
 account = repo.find(1)
@@ -148,7 +150,7 @@ accounts.post # => post1
 # Add more examples for each method
 
 # 3
-# Adds new record in to the 'accounts' table
+# Adds new record to the 'accounts' table
 repo = AccountRepository.new
 
 new_account = Account.new
@@ -162,7 +164,6 @@ all_accounts.length # => 4
 
 # 4
 # Deletes an account
-
 repo = AccountsRepistory.new
 repo.delete(4)
 all_accounts = repo.all

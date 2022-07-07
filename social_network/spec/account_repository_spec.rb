@@ -45,7 +45,7 @@ RSpec.describe AccountRepository do
         expect(accounts.post).to eq('post1')
     end
 
-    it "Adds new record in to the 'accounts' table" do
+    it "adds new record to the 'accounts' table" do
         repo = AccountRepository.new
 
         new_account = Account.new
@@ -69,7 +69,7 @@ RSpec.describe AccountRepository do
         )
     end
 
-    it "Deletes an account" do
+    it "deletes an account" do
         repo = AccountRepository.new
         repo.delete(4)
 

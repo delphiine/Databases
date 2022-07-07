@@ -47,7 +47,7 @@ RSpec.describe PostRepository do
         expect(post.account_id).to eq(1)
     end
 
-    it "adds new record in to the 'posts' table" do
+    it "adds new record to the 'posts' table" do
         repo = PostRepository.new
         
         new_post = Post.new
