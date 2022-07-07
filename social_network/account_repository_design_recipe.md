@@ -43,7 +43,7 @@ Define the attributes of your Model class. You can usually map the table columns
 class Account
 
   # Replace the attributes by your own columns.
-  attr_accessor :id, :email, :username, :post 
+  attr_accessor :id, :email, :username, 
 end
 ```
 
@@ -68,7 +68,7 @@ class AccountRepository
   # No arguments
   def all
     # Executes the SQL query:
-    # SELECT id, email, username, post FROM accounts;
+    # SELECT id, email, username FROM accounts;
 
     # Returns an array of Account objects.
   end
@@ -77,23 +77,23 @@ class AccountRepository
   # One argument: the id (number)
   def find(id)
     # Executes the SQL query:
-    # SELECT id, email, username, post FROM accounts WHERE id = $1;
+    # SELECT id, email, username FROM accounts WHERE id = $1;
 
     # Returns a single Account object.
   end
 
   # Add more methods below for each operation you'd like to implement.
 
-  # Adds new record in to the 'posts' table
-  # One argument: the new post
+  # Adds new record in to the 'accounts' table
+  # One argument: the new account
   def create(new_account)
     # Executes the SQL query:
-    # INSERT INTO accounts (email, username, post) VALUES (4, 'test4@email.com', 'username4', 'post4')
+    # INSERT INTO accounts (id, email, username) VALUES (4, 'test4@email.com', 'username4')
 
     # Returns nothing
   end
 
-  # Deletes a posts
+  # Deletes an account
   # One argument: the id (number)
   def delete(id)
     # Executes the SQL query:
@@ -124,17 +124,14 @@ accounts.length # =>  3
 accounts[0].id # =>  1
 accounts[0].email # =>  'test1@email.com'
 accounts[0].username # =>  'username1'
-accounts[0].post # => post1
 
 accounts[1].id # =>  2
 accounts[1].email # =>  'test2@email.com'
 accounts[1].username # =>  'username2'
-accounts[1].post # => post2
 
 accounts[2].id # =>  3
 accounts[2].email # =>  'test3@email.com'
 accounts[2].username # =>  'username3'
-accounts[2].post # => post3
 
 # 2
 # Get a single account
@@ -145,7 +142,6 @@ account = repo.find(1)
 accounts.id # =>  1
 accounts.email # =>  'test1@email.com'
 accounts.username # =>  'username1'
-accounts.post # => post1
 
 # Add more examples for each method
 
@@ -157,7 +153,6 @@ new_account = Account.new
 new_account.id # => 4
 new_account.email # => "test4@email.com"
 new_account.username # => "username4"
-new_account.post # => post4
 repo.create(new_account)
 all_accounts = repo.all
 all_accounts.length # => 4
@@ -168,8 +163,6 @@ repo = AccountsRepistory.new
 repo.delete(4)
 all_accounts = repo.all
 all_accounts.length # => 3
-
-
 ```
 
 Encode this example as a test.
