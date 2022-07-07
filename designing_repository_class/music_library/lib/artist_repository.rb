@@ -31,4 +31,15 @@ class ArtistRepository
 
     return artist
   end
+
+  def create(new_artist)
+    sql = 'INSERT INTO 
+            artists (id, name, genre) 
+            VALUES ($1, $2, $3);'
+    params = [new_artist.id, new_artist.name, new_artist.genre]
+
+    DatabaseConnection.exec_params(sql, params)
+
+    return nil
+  end
 end

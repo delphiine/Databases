@@ -1,10 +1,13 @@
 require "album_repository"
+require 'database_connection'
+
 
 describe AlbumRepository do
     def reset_albums_table
         seed_sql = File.read('spec/seeds_albums.sql')
-        connection = PG.connect({ host: '127.0.0.1', dbname: 'music_library_test' })
+        connection = PG.connect({ host: '127.0.0.1', dbname: 'music_library_test'})
         connection.exec(seed_sql)
+        DatabaseConnection.connect("music_library_test")
     end
 
     before(:each) do 
@@ -30,6 +33,7 @@ describe AlbumRepository do
         repository = AlbumRepository.new
 
         new_album = Album.new
+        new_album.id = 3
         new_album.title = 'Trompe le Monde'
         new_album.release_year = '1991'
         new_album.artist_id = '1'
