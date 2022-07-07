@@ -44,7 +44,7 @@ Define the attributes of your Model class. You can usually map the table columns
 class Post
 
   # Replace the attributes by your own columns.
-  attr_accessor :id, :title, :content, :views, :account_id 
+  attr_accessor :id, :title, :content, :views, :account_id
 end
 
 ```
@@ -202,7 +202,7 @@ def reset_posts_table
 end
 
 describe PostRepository do
-  before(:each) do 
+  before(:each) do
     reset_posts_table
   end
 
@@ -213,4 +213,3 @@ end
 ## 8. Test-drive and implement the Repository class behaviour
 
 _After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour._
-
