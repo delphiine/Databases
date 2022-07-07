@@ -6,7 +6,7 @@ If the table is already created in the database, you can skip this step.
 Your tests will depend on data stored in PostgreSQL to run.
 
 If seed data is provided (or you already created it), you can skip this step.
-```
+```sql
 -- EXAMPLE
 -- (file: spec/seeds_{table_name}.sql)
 
@@ -25,11 +25,13 @@ INSERT INTO albums (title, release_year, artist_id) VALUES ('Here Comes the Sun'
 INSERT INTO albums (title, release_year, artist_id) VALUES ('Waterloo', 1972, 2);
 Run this SQL file on the database to truncate (empty) the table, and insert the seed data. Be mindful of the fact any existing records in the table will be deleted.
 ```
-
+```bash
 psql -h 127.0.0.1 music_library < seeds_albums.sql
+psql -h 127.0.0.1 music_library < seeds_artists.sql
+```
 3. Define the class names
 Usually, the Model class name will be the capitalised table name (single instead of plural). The same name is then suffixed by Repository for the Repository class name.
-```
+```ruby
 # EXAMPLE
 # Table name: albums
 
@@ -42,9 +44,10 @@ end
 # (in lib/album_repository.rb)
 class AlbumRepository
 end
+```
 4. Implement the Model class
 Define the attributes of your Model class. You can usually map the table columns to the attributes of the class, including primary and foreign keys.
-
+```ruby
 # EXAMPLE
 # Table name: albums
 
@@ -63,7 +66,7 @@ You may choose to test-drive this class, but unless it contains any more logic t
 Your Repository class will need to implement methods for each "read" or "write" operation you'd like to run against the database.
 
 Using comments, define the method signatures (arguments and return value) and what they do - write up the SQL queries that will be used by each method.
-```
+```ruby
 # EXAMPLE
 # Table name: Albums
 
@@ -108,7 +111,7 @@ class AlbumRepository
 Write Ruby code that defines the expected behaviour of the Repository class, following your design from the table written in step 5.
 
 These examples will later be encoded as RSpec tests.
-```
+```ruby
 # EXAMPLES
 
 # 1
@@ -162,7 +165,7 @@ all_albums = repository.all
 Running the SQL code present in the seed file will empty the table and re-insert the seed data.
 
 This is so you get a fresh table contents every time you run the test suite.
-```
+```ruby
 # EXAMPLE
 
 # file: spec/album_repository_spec.rb

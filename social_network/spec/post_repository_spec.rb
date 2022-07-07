@@ -6,11 +6,11 @@ RSpec.describe PostRepository do
         connection = PG.connect({ host: '127.0.0.1', dbname: 'social_network_test' })
         connection.exec(seed_sql)
     end
-      
-    before(:each) do 
+
+    before(:each) do
         reset_posts_table
     end
-      
+
     it "returns all posts" do
         repo = PostRepository.new
 
@@ -39,7 +39,7 @@ RSpec.describe PostRepository do
     it "returns a single post" do
         repo = PostRepository.new
         post = repo.find(2)
-        
+
         expect(post.id).to eq(2)
         expect(post.title).to eq('title2')
         expect(post.content).to eq('content2')
@@ -49,7 +49,7 @@ RSpec.describe PostRepository do
 
     it "adds new record to the 'posts' table" do
         repo = PostRepository.new
-        
+
         new_post = Post.new
         new_post.id = 4
         new_post.title = "title4"
@@ -61,7 +61,7 @@ RSpec.describe PostRepository do
         all_posts = repo.all
 
         expect(all_posts.length).to eq(4)
-        
+
         expect(all_posts).to include(
             have_attributes(
                 id: new_post.id,
@@ -75,9 +75,11 @@ RSpec.describe PostRepository do
 
     it "deletes a posts" do
         repo = PostRepository.new
+
+        repo.delete(3)
         repo.delete(4)
 
         all_posts = repo.all
-        expect(all_posts.length).to eq(3)
+        expect(all_posts.length).to eq(2)
     end
 end
