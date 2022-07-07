@@ -73,9 +73,39 @@ RSpec.describe PostRepository do
         )
     end
 
-    it "deletes a posts" do
+    it "deletes a post" do
         repo = PostRepository.new
+        new_post = Post.new
 
+        new_post.id = 4
+        new_post.title = "title4"
+        new_post.content = "content4"
+        new_post.views = 2
+        new_post.account_id = 1
+
+        repo.create(new_post)
+        all_posts = repo.all
+        expect(all_posts.length).to eq 4
+        
+        repo.delete(4)
+        all_posts = repo.all
+        expect(all_posts.length).to eq 3
+    end
+
+    it "deletes multiple posts" do
+        repo = PostRepository.new
+        new_post = Post.new
+        
+        new_post.id = 4
+        new_post.title = "title4"
+        new_post.content = "content4"
+        new_post.views = 2
+        new_post.account_id = 1
+
+        repo.create(new_post)
+        all_posts = repo.all
+        expect(all_posts.length).to eq 4
+    
         repo.delete(3)
         repo.delete(4)
 

@@ -35,8 +35,8 @@ class PostRepository
     end
 
     def create(new_post)
-       sql = "INSERT INTO 
-                posts (id, title, content, views, account_id) 
+       sql = "INSERT INTO
+                posts (id, title, content, views, account_id)
                 VALUES ($1, $2, $3, $4, $5)"
         params = [
             new_post.id,
@@ -45,7 +45,7 @@ class PostRepository
             new_post.views,
             new_post.account_id
         ]
-        
+
         DatabaseConnection.exec_params(sql, params)
     end
 

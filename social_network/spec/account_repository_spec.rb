@@ -71,11 +71,39 @@ RSpec.describe AccountRepository do
 
     it "deletes an account" do
         repo = AccountRepository.new
+        new_account = Account.new
 
+        new_account.id = 4
+        new_account.email = 'test4@email.com'
+        new_account.username = 'username4'
+        new_account.post = 'post4'
+
+        repo.create(new_account)
+        all_accounts = repo.all
         expect(all_accounts.length).to eq 4
+        
+        repo.delete(4)
+        all_accounts = repo.all
+        expect(all_accounts.length).to eq 3
+    end
+
+    it "deletes multiple accounts" do
+        repo = AccountRepository.new
+        new_account = Account.new
+
+        new_account.id = 4
+        new_account.email = 'test4@email.com'
+        new_account.username = 'username4'
+        new_account.post = 'post4'
+
+        repo.create(new_account)
+        all_accounts = repo.all
+        expect(all_accounts.length).to eq 4
+    
+        repo.delete(3)
         repo.delete(4)
 
         all_accounts = repo.all
-        expect(all_accounts.length).to eq 3
+        expect(all_accounts.length).to eq(2)
     end
 end
