@@ -23,8 +23,9 @@ TRUNCATE TABLE albums RESTART IDENTITY;
 
 INSERT INTO albums (title, release_year, artist_id) VALUES ('Here Comes the Sun', 1971, 4);
 INSERT INTO albums (title, release_year, artist_id) VALUES ('Waterloo', 1972, 2);
-Run this SQL file on the database to truncate (empty) the table, and insert the seed data. Be mindful of the fact any existing records in the table will be deleted.
 ```
+
+Run this SQL file on the database to truncate (empty) the table, and insert the seed data. Be mindful of the fact any existing records in the table will be deleted.
 ```bash
 psql -h 127.0.0.1 music_library < seeds_albums.sql
 psql -h 127.0.0.1 music_library < seeds_artists.sql
