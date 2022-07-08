@@ -18,11 +18,14 @@ class Application
 
   def run
     @io.puts "Welcome to the music library manager!"
+    puts " "
     @io.puts "What would you like to do?  
     1 - List all albums   
     2 - List all artists"
-
+    puts " "
+    @io.puts"Enter your choice: "
     answer = @io.gets.chomp
+
     num = 1
     if answer == "1" 
         @album_repository.all.each do |record|
