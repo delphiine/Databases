@@ -79,7 +79,7 @@ RSpec.describe PostRepository do
         expect(all_posts.length).to eq 3
         
         repo.delete(3)
-        
+
         all_posts = repo.all
         expect(all_posts.length).to eq 2
     end
@@ -87,6 +87,7 @@ RSpec.describe PostRepository do
     it "deletes multiple posts" do
         repo = PostRepository.new
         all_posts = repo.all
+        
         expect(all_posts.length).to eq 3
     
         repo.delete(2)
