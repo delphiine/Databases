@@ -1,24 +1,24 @@
-# Students Two Tables Design Recipe
+# Cohort Directory Two Tables Design Recipe
 
 
 ## 1. Extract nouns from the user stories or specification
 
 ```
-As a music lover,
-So I can organise my records,
-I want to keep a list of albums' titles.
+As a coach
+So I can get to know all students
+I want to see a list of students' names.
 
-As a music lover,
-So I can organise my records,
-I want to keep a list of albums' release years.
+As a coach
+So I can get to know all students
+I want to see a list of cohorts' names.
 
-As a music lover,
-So I can organise my records,
-I want to keep a list of artists' names.
+As a coach
+So I can get to know all students
+I want to see a list of cohorts' starting dates.
 
-As a music lover,
-So I can organise my records,
-I want to know each album's artist.
+As a coach
+So I can get to know all students
+I want to see a list of students' cohorts.
 ```
 
 ```
@@ -106,7 +106,7 @@ Replace the relevant bits in this example with your own:
 
 ```sql
 -- EXAMPLE
--- file: albums_table.sql
+-- file: student_directory_table.sql
 
 -- Replace the table name, columm names and types.
 
@@ -115,14 +115,12 @@ CREATE TABLE Cohorts (
   id SERIAL PRIMARY KEY,
   name text,
   start_date text,
-  student_name text,
 );
 
 -- Then the table with the foreign key first.
 CREATE TABLE Students (
   id SERIAL PRIMARY KEY,
   name text,
-  cohort int,
 -- The foreign key name is always {other_table_singular}_id
   cohort_id int,
   constraint fk_cohort foreign key(cohort_id) references cohorts(id)
@@ -133,6 +131,5 @@ CREATE TABLE Students (
 ## 5. Create the tables.
 
 ```bash
-psql -h 127.0.0.1 student_directory_2 < seeds_cohorts.sql
-psql -h 127.0.0.1 student_directory_2 < seeds_students.sql
+psql -h 127.0.0.1 student_directory_2 < seeds_cohort_directory.sql
 ```
