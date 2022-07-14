@@ -1,6 +1,5 @@
 require_relative './artist'
 require_relative 'database_connection'
-require 'pg'
 
 class ArtistRepository
   def all

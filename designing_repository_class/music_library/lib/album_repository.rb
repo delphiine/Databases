@@ -1,6 +1,4 @@
 require_relative './album'
-require_relative 'database_connection'
-require 'pg'
 
 class AlbumRepository
     def all

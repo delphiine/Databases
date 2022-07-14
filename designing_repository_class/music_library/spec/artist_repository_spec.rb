@@ -1,5 +1,4 @@
 require "artist_repository"
-require 'database_connection'
 
 describe ArtistRepository do
   def reset_artists_table

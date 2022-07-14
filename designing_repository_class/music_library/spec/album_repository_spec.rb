@@ -1,6 +1,4 @@
 require "album_repository"
-require 'database_connection'
-
 
 describe AlbumRepository do
     def reset_albums_table
